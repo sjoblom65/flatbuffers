@@ -37,6 +37,8 @@ $TEST_NOINCL_FLAGS $TEST_CPP_FLAGS -I include_test monster_test.fbs monsterdata_
 $TEST_NOINCL_FLAGS $TEST_CPP_FLAGS -o namespace_test namespace_test/namespace_test1.fbs namespace_test/namespace_test2.fbs
 
 ../flatc --cpp --java --kotlin --csharp --js --ts --php $TEST_BASE_FLAGS $TEST_CPP_FLAGS -o union_vector ./union_vector/union_vector.fbs
+../flatc --rust -I include_test -o include_test include_test/include_test1.fbs
+../flatc --rust -I include_test -o include_test/sub include_test/sub/include_test2.fbs
 ../flatc -b --schema --bfbs-comments --bfbs-builtins -I include_test monster_test.fbs
 ../flatc --cpp --bfbs-comments --bfbs-builtins --bfbs-gen-embed $TEST_NOINCL_FLAGS $TEST_CPP_FLAGS -I include_test monster_test.fbs
 ../flatc -b --schema --bfbs-comments --bfbs-builtins -I include_test arrays_test.fbs
@@ -44,6 +46,7 @@ $TEST_NOINCL_FLAGS $TEST_CPP_FLAGS -o namespace_test namespace_test/namespace_te
 ../flatc --cpp --java --kotlin --csharp --python $TEST_NOINCL_FLAGS $TEST_CPP_FLAGS monster_extra.fbs monsterdata_extra.json
 ../flatc --cpp --java --csharp --jsonschema $TEST_NOINCL_FLAGS $TEST_CPP_FLAGS --scoped-enums arrays_test.fbs
 ../flatc --python $TEST_BASE_FLAGS arrays_test.fbs
+../flatc --dart monster_extra.fbs
 
 # Flag c++17 requires Clang6, GCC7, MSVC2017 (_MSC_VER >= 1914)  or higher.
 TEST_CPP17_FLAGS="--cpp --cpp-std c++17 -o ./cpp17/generated_cpp17 $TEST_NOINCL_FLAGS"
